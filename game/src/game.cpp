@@ -16,16 +16,12 @@ Game::Game() {
 void Game::loop() {
     while (window.isOpen()) {
         dt = clock.restart().asSeconds();
+        // Handling input
         handleInput();
 
-        //update
-        //render
+        // Update
+        // Render
         window.clear(sf::Color::White);
-        window.setView(viewUI);
-        sf::RectangleShape rect = sf::RectangleShape({80.0f, 80.0f});
-        rect.setPosition({0.0f, 0.0f});
-        rect.setFillColor(sf::Color::White);
-        window.draw(rect);
         window.display();
     }
 }

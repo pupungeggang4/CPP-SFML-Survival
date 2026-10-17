@@ -4,6 +4,10 @@
 #include "includes.hpp"
 
 class Scene;
+class SceneTitle;
+class SceneSelect;
+class SceneBattle;
+
 class Game {
     public:
         // System

@@ -13,7 +13,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
-enum State {NORMAL, INVENTORY};
+enum State {NORMAL, REWARD};
 
 using std::shared_ptr;
 using std::make_shared;
