@@ -1,1 +1,3 @@
-# CPP-SFML-CardRPG
+# CPP-SFML-Survival
+
+SFML build of survival game.
