@@ -13,6 +13,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
+enum SceneName {TITLE, SELECT, BATTLE};
 enum State {NORMAL, REWARD};
 
 using std::shared_ptr;

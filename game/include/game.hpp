@@ -17,7 +17,8 @@ class Game {
 
         // Game System
         int state;
-        std::unordered_map<std::string, shared_ptr<Scene>> scenes;
+        std::unordered_map<int, shared_ptr<Scene>> scenes;
+        shared_ptr<Scene> scene;
 
         // Functions
         Game();
