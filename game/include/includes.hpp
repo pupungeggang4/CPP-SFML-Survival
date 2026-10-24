@@ -7,7 +7,10 @@
 
 #include <string>
 #include <unordered_map>
+#include <vector>
 #include <array>
+
+#include <memory>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
