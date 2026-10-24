@@ -12,6 +12,7 @@ Game::Game() {
     window = sf::RenderWindow(sf::VideoMode({width, height}), "Planterguy's Adventure");
     window.setKeyRepeatEnabled(false);
     window.setVerticalSyncEnabled(true);
+
     scale = width / 1280.0f;
     viewUI = sf::View({640, 360}, {1280, 720});
     viewCamera = sf::View({0, 0}, {1280, 720});
