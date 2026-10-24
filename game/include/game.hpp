@@ -11,7 +11,7 @@ class SceneBattle;
 class Game {
     public:
         // System
-        sf::RenderWindow window; float aspRatio = 16.0f / 9.0f; unsigned int width, height;
+        sf::RenderWindow window; float aspRatio = 16.0f / 9.0f; unsigned int width, height; float scale;
         sf::View viewUI, viewCamera;
         sf::Clock clock; float dt;
 

@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "asset.hpp"
 #include "scene.hpp"
 
 Game::Game() {
@@ -11,9 +12,12 @@ Game::Game() {
     window = sf::RenderWindow(sf::VideoMode({width, height}), "Planterguy's Adventure");
     window.setKeyRepeatEnabled(false);
     window.setVerticalSyncEnabled(true);
+    scale = width / 1280.0f;
     viewUI = sf::View({640, 360}, {1280, 720});
     viewCamera = sf::View({0, 0}, {1280, 720});
     clock = sf::Clock();
+
+    Asset::loadAsset();
 
     scenes = std::unordered_map<int, shared_ptr<Scene>>({
         {TITLE, make_shared<SceneTitle>()}
@@ -23,18 +27,16 @@ Game::Game() {
 }
 
 void Game::loop() {
-    while (window.isOpen()) {
-        dt = clock.restart().asSeconds();
-        // Handling input
-        handleInput();
+    dt = clock.restart().asSeconds();
+    // Handling input
+    handleInput();
 
-        // Update
-        scene->update(*this);
-        // Render
-        window.clear(sf::Color::White);
-        scene->render(*this);
-        window.display();
-    }
+    // Update
+    scene->update(*this);
+    // Render
+    window.clear(sf::Color::White);
+    scene->render(*this);
+    window.display();
 }
 
 void Game::handleInput() {
@@ -43,6 +45,14 @@ void Game::handleInput() {
         if (event->is<sf::Event::Closed>()) {
             window.close();
         }
+
+        if (const auto* e = event->getIf<sf::Event::MouseButtonReleased>()) {
+            sf::Vector2f pos = {(float)e->position.x, (float)e->position.y};
+            pos /= scale;
+            std::cout << pos.x << " " << pos.y << std::endl;
+            scene->mouseUp(*this, pos, e->button);
+        }
+
         if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
             if (keyPressed->scancode == sf::Keyboard::Scan::Escape) {
                 std::cout << "the escape key was pressed" << std::endl;

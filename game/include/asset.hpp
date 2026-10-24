@@ -5,11 +5,11 @@
 
 class Asset {
     public:
-        sf::Font neodgm;
-        std::unordered_map<std::string, sf::Texture> texture; 
+        static std::optional<sf::Font> neodgm;
+        static std::unordered_map<std::string, sf::Texture> texture; 
 
-        void loadAsset();
-        void disposeAsset();
+        static void loadAsset();
+        static void disposeAsset();
 };
 
 #endif
