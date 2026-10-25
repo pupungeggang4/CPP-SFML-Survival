@@ -40,7 +40,11 @@ void SceneTitle::keyDown(Game& game, sf::Keyboard::Scan scan) {
 
 void SceneTitle::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button) {
     if (button == sf::Mouse::Button::Left) {
-        if (buttonQuit->contains(pos)) {
+        if (buttonStart->contains(pos)) {
+            game.changeSceneTo(SELECT);
+        } else if (buttonCollection->contains(pos)) {
+            game.changeSceneTo(COLLECTION);
+        } else if (buttonQuit->contains(pos)) {
             game.window.close();
         }
     }
