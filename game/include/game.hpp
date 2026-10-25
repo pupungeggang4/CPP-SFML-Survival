@@ -24,6 +24,7 @@ class Game {
         Game();
         void loop();
         void handleInput();
+        void changeSceneTo(int);
 };
 
 #endif

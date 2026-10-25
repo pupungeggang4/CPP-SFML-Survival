@@ -16,7 +16,7 @@ void Scene::render(Game& game) {
 
 }
 
-void Scene::keyDown(Game& game) {
+void Scene::keyDown(Game& game, sf::Keyboard::Scan scan) {
 
 }
 

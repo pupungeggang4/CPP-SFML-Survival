@@ -22,7 +22,10 @@ Game::Game() {
     Asset::loadAsset();
 
     scenes = std::unordered_map<int, shared_ptr<Scene>>({
-        {TITLE, make_shared<SceneTitle>()}
+        {TITLE, make_shared<SceneTitle>()},
+        {SELECT, make_shared<SceneSelect>()},
+        {BATTLE, make_shared<SceneBattle>()},
+        {COLLECTION, make_shared<SceneCollection>()}
     });
     scene = scenes[TITLE];
     scene->ready(*this);
@@ -55,19 +58,19 @@ void Game::handleInput() {
             scene->mouseUp(*this, pos, e->button);
         }
 
-        if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-            if (keyPressed->scancode == sf::Keyboard::Scan::Escape) {
-                std::cout << "the escape key was pressed" << std::endl;
-                std::cout << "scancode: " << static_cast<int>(keyPressed->scancode) << std::endl;
-                std::cout << "code: " << static_cast<int>(keyPressed->code) << std::endl;
-                std::cout << "control: " << keyPressed->control << std::endl;
-                std::cout << "alt: " << keyPressed->alt << std::endl;
-                std::cout << "shift: " << keyPressed->shift << std::endl;
-                std::cout << "system: " << keyPressed->system << std::endl;
-                std::cout << "description: " << sf::Keyboard::getDescription(keyPressed->scancode).toAnsiString() << std::endl;
-                std::cout << "localize: " << static_cast<int>(sf::Keyboard::localize(keyPressed->scancode)) << std::endl;
-                std::cout << "delocalize: " << static_cast<int>(sf::Keyboard::delocalize(keyPressed->code)) << std::endl;
-            }
+        if (const auto* e = event->getIf<sf::Event::KeyPressed>()) {
+            Scan scan = e->scancode;
+            scene->keyDown(*this, scan);
         }
+    }
+}
+
+void Game::changeSceneTo(int target) {
+    try {
+        scene = scenes[target];
+        scene->ready(*this);
+    } catch (...) {
+        std::cout << "No Scene" << std::endl;
+        window.close();
     }
 }
