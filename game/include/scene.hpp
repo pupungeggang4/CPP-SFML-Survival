@@ -5,6 +5,7 @@
 
 class Game;
 class ButtonColor;
+class ButtonTexture;
 
 class Scene {
     public:
@@ -31,6 +32,7 @@ class SceneTitle : public Scene {
 
 class SceneSelect : public Scene {
     public:
+        shared_ptr<ButtonTexture> buttonBack;
 
         SceneSelect();
         void ready(Game&) override;
