@@ -6,6 +6,7 @@
 class Game;
 class ButtonColor;
 class ButtonTexture;
+class Menu;
 
 class Scene {
     public:
@@ -54,6 +55,8 @@ class SceneSelect : public Scene {
 
 class SceneBattle : public Scene {
     public:
+        shared_ptr<Menu> menu;
+
         SceneBattle();
         void ready(Game&) override;
         void update(Game&) override;
@@ -77,11 +80,14 @@ class SceneCollection : public Scene {
 class Menu : public Scene {
     public:
         int selected = 0;
+        std::optional<sf::Text> textPaused;
+        sf::RectangleShape bg, arrow;
+        shared_ptr<ButtonColor> buttonResume, buttonExit, buttonQuit;
 
         Menu();
         void render(Game&) override;
-        void keyDown(Game&) override;
-        void mouseUp(Game*, sf::Vector2f, sf::Mouse::Button) override;
+        void keyDown(Game&, sf::Keyboard::Scan) override;
+        void mouseUp(Game&, sf::Vector2f, sf::Mouse::Button) override;
 };
 
 #endif

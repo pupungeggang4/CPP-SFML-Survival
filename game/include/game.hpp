@@ -16,7 +16,7 @@ class Game {
         sf::Clock clock; float dt;
 
         // Game System
-        int state;
+        int state; bool menu;
         std::unordered_map<int, shared_ptr<Scene>> scenes;
         shared_ptr<Scene> scene;
 

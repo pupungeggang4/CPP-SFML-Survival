@@ -15,3 +15,15 @@ std::unordered_map<std::string, std::array<float, 6>> UI::UISelect = {
     {"button_start", {1100, 620, 160, 80}},
     {"description_area", {660, 120, 600, 340}},
 };
+
+std::unordered_map<std::string, std::array<float, 6>> UI::UIBattle = {
+};
+
+std::unordered_map<std::string, std::array<float, 6>> UI::UIMenu = {
+    {"rect", {320, 200, 640, 320}},
+    {"text_paused", {340, 220}},
+    {"button_resume", {320, 280, 640, 80}},
+    {"button_exit", {320, 360, 640, 80}},
+    {"button_quit", {320, 440, 640, 80}},
+    {"arrow", {240, 280, 0, 80, 80, 80}}
+};
