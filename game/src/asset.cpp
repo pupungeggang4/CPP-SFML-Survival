@@ -9,6 +9,7 @@ void Asset::loadAsset() {
     texture = std::unordered_map<std::string, sf::Texture>({
         {"button_back", sf::Texture("asset/image/back.png")},
         {"arrow", sf::Texture("asset/image/arrow.png")},
+        {"cursor", sf::Texture("asset/image/cursor.png")}
     });
 }
 

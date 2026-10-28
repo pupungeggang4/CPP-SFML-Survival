@@ -8,7 +8,7 @@ SceneBattle::SceneBattle() {
 }
 
 void SceneBattle::ready(Game& game) {
-
+    game.menu = false;
 }
 
 void SceneBattle::update(Game& game) {

@@ -35,11 +35,14 @@ class SceneTitle : public Scene {
 
 class SceneSelect : public Scene {
     public:
+        int selected = 0;
+
         std::optional<sf::Text> textTitle;
         shared_ptr<ButtonTexture> buttonBack;
-        std::array<shared_ptr<ButtonColor>, 8> buttonCharacter;
+        std::array<shared_ptr<ButtonColor>, 10> buttonCharacter;
         shared_ptr<ButtonColor> buttonStart;
         sf::RectangleShape descriptionArea;
+        sf::RectangleShape cursor;
 
         SceneSelect();
         void ready(Game&) override;
@@ -69,6 +72,16 @@ class SceneCollection : public Scene {
         void render(Game&) override;
         void keyDown(Game&, sf::Keyboard::Scan) override;
         void mouseUp(Game&, sf::Vector2f, sf::Mouse::Button) override;
+};
+
+class Menu : public Scene {
+    public:
+        int selected = 0;
+
+        Menu();
+        void render(Game&) override;
+        void keyDown(Game&) override;
+        void mouseUp(Game*, sf::Vector2f, sf::Mouse::Button) override;
 };
 
 #endif
