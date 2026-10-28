@@ -35,7 +35,11 @@ class SceneTitle : public Scene {
 
 class SceneSelect : public Scene {
     public:
+        std::optional<sf::Text> textTitle;
         shared_ptr<ButtonTexture> buttonBack;
+        std::array<shared_ptr<ButtonColor>, 8> buttonCharacter;
+        shared_ptr<ButtonColor> buttonStart;
+        sf::RectangleShape descriptionArea;
 
         SceneSelect();
         void ready(Game&) override;

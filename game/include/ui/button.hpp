@@ -17,17 +17,17 @@ class ButtonColor : public Button {
     public:
         std::optional<sf::Text> text;
 
-        ButtonColor(std::array<float, 6>, sf::String, sf::Color);
+        ButtonColor(std::array<float, 6>, sf::Color, sf::String, int size = 32);
         sf::RectangleShape bg;
         void render(Game&) override;
 };
 
 class ButtonTexture : public Button {
     public:
-        std::optional<sf::Sprite> sprite;
+        sf::RectangleShape bg;
         std::optional<sf::Text> text;
 
-        ButtonTexture(std::array<float, 6>, sf::String, sf::Texture&);
+        ButtonTexture(std::array<float, 6>, sf::Texture*, sf::String, int size = 32);
         void render(Game&) override;
 };
 

@@ -10,9 +10,9 @@ SceneTitle::SceneTitle() {
     textTitle.emplace(*Asset::neodgm, "Planterguy Survival", 32);
     textTitle->setFillColor(sf::Color::Black);
     textTitle->setPosition({UI::UITitle["text_title"][0], UI::UITitle["text_title"][1]});
-    buttonStart = make_shared<ButtonColor>(UI::UITitle["button_start"], "Start Game", sf::Color::Yellow);
-    buttonCollection = make_shared<ButtonColor>(UI::UITitle["button_collection"], "Collection", sf::Color::Cyan);
-    buttonQuit = make_shared<ButtonColor>(UI::UITitle["button_quit"], "Quit Game", sf::Color::Yellow);
+    buttonStart = make_shared<ButtonColor>(UI::UITitle["button_start"], sf::Color::Yellow, "Start Game");
+    buttonCollection = make_shared<ButtonColor>(UI::UITitle["button_collection"], sf::Color::Cyan, "Collection");
+    buttonQuit = make_shared<ButtonColor>(UI::UITitle["button_quit"], sf::Color::Yellow, "Quit Game");
     arrow.emplace(Asset::texture["arrow"]);
 }
 

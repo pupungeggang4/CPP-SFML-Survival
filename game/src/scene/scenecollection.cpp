@@ -7,7 +7,7 @@
 #include "game.hpp"
 
 SceneCollection::SceneCollection() {
-    buttonBack = make_shared<ButtonTexture>(UI::UISelect["button_back"], "", Asset::texture["button_menu"]);
+    buttonBack = make_shared<ButtonTexture>(UI::UISelect["button_back"], &Asset::texture["button_back"], "");
 }
 
 void SceneCollection::ready(Game& game) {
