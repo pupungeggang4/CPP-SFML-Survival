@@ -19,6 +19,9 @@ class Scene {
 
 class SceneTitle : public Scene {
     public:
+        int selected = 0;
+
+        std::optional<sf::Sprite> arrow;
         std::optional<sf::Text> textTitle;
         shared_ptr<ButtonColor> buttonStart, buttonCollection, buttonQuit;
 
@@ -54,6 +57,8 @@ class SceneBattle : public Scene {
 
 class SceneCollection : public Scene {
     public:
+        shared_ptr<ButtonTexture> buttonBack;
+
         SceneCollection();
         void ready(Game&) override;
         void update(Game&) override;

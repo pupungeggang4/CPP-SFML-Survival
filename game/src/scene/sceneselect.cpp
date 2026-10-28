@@ -22,7 +22,11 @@ void SceneSelect::render(Game& game) {
 }
 
 void SceneSelect::keyDown(Game& game, sf::Keyboard::Scan scan) {
+    using Scan = sf::Keyboard::Scan;
 
+    if (scan == Scan::Escape) {
+        game.changeSceneTo(TITLE);
+    }
 }
 
 void SceneSelect::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button) {
