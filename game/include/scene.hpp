@@ -4,6 +4,7 @@
 #include "includes.hpp"
 
 class Game;
+class Label;
 class ButtonColor;
 class ButtonTexture;
 class Menu;
@@ -22,8 +23,8 @@ class SceneTitle : public Scene {
     public:
         int selected = 0;
 
-        std::optional<sf::Sprite> arrow;
-        std::optional<sf::Text> textTitle;
+        sf::RectangleShape arrow;
+        shared_ptr<Label> textTitle;
         shared_ptr<ButtonColor> buttonStart, buttonCollection, buttonQuit;
 
         SceneTitle();
@@ -38,7 +39,7 @@ class SceneSelect : public Scene {
     public:
         int selected = 0;
 
-        std::optional<sf::Text> textTitle;
+        shared_ptr<Label> textTitle;
         shared_ptr<ButtonTexture> buttonBack;
         std::array<shared_ptr<ButtonColor>, 10> buttonCharacter;
         shared_ptr<ButtonColor> buttonStart;
@@ -56,6 +57,7 @@ class SceneSelect : public Scene {
 class SceneBattle : public Scene {
     public:
         shared_ptr<Menu> menu;
+        shared_ptr<ButtonTexture> buttonMenu;
 
         SceneBattle();
         void ready(Game&) override;
@@ -80,7 +82,7 @@ class SceneCollection : public Scene {
 class Menu : public Scene {
     public:
         int selected = 0;
-        std::optional<sf::Text> textPaused;
+        shared_ptr<Label> textPaused;
         sf::RectangleShape bg, arrow;
         shared_ptr<ButtonColor> buttonResume, buttonExit, buttonQuit;
 

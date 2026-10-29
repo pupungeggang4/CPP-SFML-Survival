@@ -1,9 +1,17 @@
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#ifndef UIELEMENT_HPP
+#define UIELEMENT_HPP
 
 #include "includes.hpp"
 
 class Game;
+
+class Label {
+    public:
+        std::optional<sf::Text> text;
+
+        Label(std::array<float, 6>, sf::Color, sf::String, int size = 32);
+        void render(Game&);
+};
 
 class Button {
     public:

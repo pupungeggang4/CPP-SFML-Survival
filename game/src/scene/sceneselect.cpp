@@ -1,14 +1,12 @@
 #include "scene.hpp"
 #include "asset.hpp"
 #include "ui/ui.hpp"
-#include "ui/button.hpp"
+#include "ui/uielement.hpp"
 
 #include "game.hpp"
 
 SceneSelect::SceneSelect() {
-    textTitle.emplace(*Asset::neodgm, "Select Character", 32);
-    textTitle->setPosition({UI::UITitle["text_title"][0], UI::UITitle["text_title"][1]});
-    textTitle->setFillColor(sf::Color::Black);
+    textTitle = make_shared<Label>(UI::UISelect["text_title"], sf::Color::Black, "Select Character");
 
     buttonBack = make_shared<ButtonTexture>(UI::UISelect["button_back"], &Asset::texture["button_back"], "");
     for (int i = 0; i < 9; i++) {
@@ -40,7 +38,8 @@ void SceneSelect::update(Game& game) {
 }
 
 void SceneSelect::render(Game& game) {
-    game.window.draw(*textTitle);
+    game.window.setView(game.viewUI);
+    textTitle->render(game);
     buttonBack->render(game);
 
     for (int i = 0; i < 9; i++) {

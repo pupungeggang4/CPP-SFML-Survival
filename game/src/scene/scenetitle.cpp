@@ -2,18 +2,17 @@
 
 #include "asset.hpp"
 #include "ui/ui.hpp"
-#include "ui/button.hpp"
+#include "ui/uielement.hpp"
 
 #include "game.hpp"
 
 SceneTitle::SceneTitle() {
-    textTitle.emplace(*Asset::neodgm, "Planterguy Survival", 32);
-    textTitle->setFillColor(sf::Color::Black);
-    textTitle->setPosition({UI::UITitle["text_title"][0], UI::UITitle["text_title"][1]});
+    textTitle = make_shared<Label>(UI::UITitle["text_title"], sf::Color::Black, "Planterguy Survival");
     buttonStart = make_shared<ButtonColor>(UI::UITitle["button_start"], sf::Color::Yellow, "Start Game");
     buttonCollection = make_shared<ButtonColor>(UI::UITitle["button_collection"], sf::Color::Cyan, "Collection");
     buttonQuit = make_shared<ButtonColor>(UI::UITitle["button_quit"], sf::Color::Yellow, "Quit Game");
-    arrow.emplace(Asset::texture["arrow"]);
+    arrow = sf::RectangleShape({UI::UITitle["arrow"][4], UI::UITitle["arrow"][5]});
+    arrow.setTexture(&Asset::texture["arrow"]);
 }
 
 void SceneTitle::ready(Game& game) {
@@ -26,14 +25,14 @@ void SceneTitle::update(Game& game) {
 
 void SceneTitle::render(Game& game) {
     game.window.setView(game.viewUI);
-    game.window.draw(*textTitle);
+    textTitle->render(game);
     buttonStart->render(game);
     buttonCollection->render(game);
     buttonQuit->render(game);
-    arrow->setPosition({
-            UI::UITitle["arrow"][0], UI::UITitle["arrow"][1] + UI::UITitle["arrow"][3] * selected
+    arrow.setPosition({
+        UI::UITitle["arrow"][0], UI::UITitle["arrow"][1] + UI::UITitle["arrow"][3] * selected
     });
-    game.window.draw(*arrow);
+    game.window.draw(arrow);
 }
 
 void SceneTitle::keyDown(Game& game, sf::Keyboard::Scan scan) {

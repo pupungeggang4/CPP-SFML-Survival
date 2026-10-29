@@ -2,14 +2,12 @@
 
 #include "asset.hpp"
 #include "ui/ui.hpp"
-#include "ui/button.hpp"
+#include "ui/uielement.hpp"
 
 #include "game.hpp"
 
 Menu::Menu() {
-    textPaused.emplace(*Asset::neodgm, "Paused", 32);
-    textPaused->setFillColor(sf::Color::Black);
-    textPaused->setPosition({UI::UIMenu["text_paused"][0], UI::UIMenu["text_paused"][1]});
+    textPaused = make_shared<Label>(UI::UIMenu["text_paused"], sf::Color::Black, "Paused");
     arrow = sf::RectangleShape({UI::UIMenu["arrow"][4], UI::UIMenu["arrow"][5]});
     arrow.setTexture(&Asset::texture["arrow"]);
     bg = sf::RectangleShape({UI::UIMenu["rect"][2], UI::UIMenu["rect"][3]});
@@ -21,13 +19,12 @@ Menu::Menu() {
 }
 
 void Menu::render(Game& game) {
-    game.window.draw(*textPaused);
     arrow.setPosition({
         UI::UIMenu["arrow"][0] + UI::UIMenu["arrow"][2], UI::UIMenu["arrow"][1] + UI::UIMenu["arrow"][3] * selected
     });
     game.window.draw(arrow);
     game.window.draw(bg);
-    game.window.draw(*textPaused);
+    textPaused->render(game);
     buttonResume->render(game);
     buttonExit->render(game);
     buttonQuit->render(game);
@@ -50,7 +47,12 @@ void Menu::keyDown(Game& game, sf::Keyboard::Scan scan) {
 }
 
 void Menu::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button) {
-    if (button == sf::Mouse::Button::Left) {
-        
+    if (buttonResume->contains(pos)) {
+        game.menu = false;
+    } else if (buttonExit->contains(pos)) {
+        game.menu = false;
+        game.changeSceneTo(TITLE);
+    } else if (buttonQuit->contains(pos)) {
+        game.window.close();
     }
 }

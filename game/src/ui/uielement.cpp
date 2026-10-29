@@ -1,6 +1,16 @@
-#include "ui/button.hpp"
+#include "ui/uielement.hpp"
 #include "asset.hpp"
 #include "game.hpp"
+
+Label::Label(std::array<float, 6> pos, sf::Color textColor, sf::String str, int size) {
+    text.emplace(*Asset::neodgm, str, size);
+    text->setPosition({pos[0], pos[1]});
+    text->setFillColor(textColor);
+}
+
+void Label::render(Game& game) {
+    game.window.draw(*text);
+}
 
 Button::Button(std::array<float, 6> r) {
     rect = {{r[0], r[1]}, {r[2], r[3]}};
