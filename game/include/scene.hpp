@@ -92,4 +92,19 @@ class Menu : public Scene {
         void mouseUp(Game&, sf::Vector2f, sf::Mouse::Button) override;
 };
 
+class WindowReward : public Scene {
+    public:
+        int selected = 0;
+        shared_ptr<Label> textTitle;
+        sf::RectangleShape bg, cursor;
+
+        shared_ptr<ButtonColor> buttonOk;
+
+        WindowReward();
+        void ready(Game&) override;
+        void render(Game&) override;
+        void keyDown(Game&, sf::Keyboard::Scan) override;
+        void mouseUp(Game&, sf::Vector2f, sf::Mouse::Button) override;
+};
+
 #endif

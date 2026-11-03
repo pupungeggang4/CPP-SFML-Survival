@@ -20,6 +20,13 @@ std::unordered_map<std::string, std::array<float, 6>> UI::UIBattle = {
     {"button_menu", {1180, 20, 80, 80}}
 };
 
+std::unordered_map<std::string, std::array<float, 6>> UI::UIReward = {
+    {"rect", {160, 40, 960, 640}},
+    {"text_title", {180, 60}},
+    {"button_ok", {560, 560, 160, 80}},
+    {"text_ok", {580, 580}}
+};
+
 std::unordered_map<std::string, std::array<float, 6>> UI::UIMenu = {
     {"rect", {320, 200, 640, 320}},
     {"text_paused", {340, 220}},
