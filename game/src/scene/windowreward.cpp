@@ -7,11 +7,11 @@
 #include "game.hpp"
 
 WindowReward::WindowReward() {
-
+    textTitle = make_shared<Label>(UI::UIReward["text_title"], sf::Color::Black, "Select");
 }
 
 void WindowReward::ready(Game& game) {
-
+    selected = 0;
 }
 
 void WindowReward::render(Game& game) {
