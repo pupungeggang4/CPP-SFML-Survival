@@ -77,7 +77,10 @@ void SceneSelect::keyDown(Game& game, sf::Keyboard::Scan scan) {
             else if (scan == Scan::Right) selected = (selected + 1) % 9;
         }
     } else {
-        if (selected != -1) game.changeSceneTo(BATTLE);
+        if (selected != -1) {
+            game.changeSceneTo(BATTLE);
+            game.state = REWARD;
+        }
     }
 }
 
@@ -97,6 +100,7 @@ void SceneSelect::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button
         if (buttonStart->contains(pos)) {
             if (selected != -1) {
                 game.changeSceneTo(BATTLE);
+                game.state = REWARD;
             }
         }
     }

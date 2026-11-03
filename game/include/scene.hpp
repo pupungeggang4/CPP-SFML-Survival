@@ -8,6 +8,7 @@ class Label;
 class ButtonColor;
 class ButtonTexture;
 class Menu;
+class WindowReward;
 
 class Scene {
     public:
@@ -57,6 +58,7 @@ class SceneSelect : public Scene {
 class SceneBattle : public Scene {
     public:
         shared_ptr<Menu> menu;
+        shared_ptr<WindowReward> windowReward;
         shared_ptr<ButtonTexture> buttonMenu;
 
         SceneBattle();

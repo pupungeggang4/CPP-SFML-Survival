@@ -13,6 +13,16 @@ class Label {
         void render(Game&);
 };
 
+class RectColor {
+    public:
+        RectColor(std::array<float, 6>, sf::Color);
+};
+
+class RectTexture {
+    public:
+        RectTexture(std::array<float, 6>, sf::Texture*);
+};
+
 class Button {
     public:
         Button(std::array<float, 6>);

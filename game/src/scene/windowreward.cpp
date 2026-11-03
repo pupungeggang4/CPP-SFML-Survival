@@ -8,6 +8,9 @@
 
 WindowReward::WindowReward() {
     textTitle = make_shared<Label>(UI::UIReward["text_title"], sf::Color::Black, "Select");
+    bg = sf::RectangleShape({UI::UIReward["rect"][2], UI::UIReward["rect"][3]});
+    bg.setPosition({UI::UIReward["rect"][0], UI::UIReward["rect"][1]});
+    bg.setFillColor(sf::Color::Yellow);
 }
 
 void WindowReward::ready(Game& game) {
@@ -15,7 +18,7 @@ void WindowReward::ready(Game& game) {
 }
 
 void WindowReward::render(Game& game) {
-
+    game.window.draw(bg);
 }
 
 void WindowReward::keyDown(Game& game, sf::Keyboard::Scan scan) {

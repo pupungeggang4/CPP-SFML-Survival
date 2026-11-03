@@ -8,6 +8,7 @@
 
 SceneBattle::SceneBattle() {
     menu = make_shared<Menu>();
+    windowReward = make_shared<WindowReward>();
     buttonMenu = make_shared<ButtonTexture>(UI::UIBattle["button_menu"], &Asset::texture["button_menu"], "");
 }
 
@@ -22,6 +23,10 @@ void SceneBattle::update(Game& game) {
 void SceneBattle::render(Game& game) {
     game.window.setView(game.viewUI);
     buttonMenu->render(game);
+
+    if (game.state == REWARD) {
+        windowReward->render(game);
+    }
 
     if (game.menu == true) {
         menu->render(game);
@@ -41,6 +46,10 @@ void SceneBattle::keyDown(Game& game, sf::Keyboard::Scan scan) {
         if (scan == Scan::Escape) {
             game.menu = true;
         }
+
+        if (game.state == REWARD) {
+            windowReward->keyDown(game, scan);
+        }
     }
 }
 
@@ -54,6 +63,10 @@ void SceneBattle::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button
         } else {
             if (buttonMenu->contains(pos)) {
                 game.menu = true;
+            }
+
+            if (game.state == REWARD) {
+                windowReward->mouseUp(game, pos, button);
             }
         }
     }
