@@ -22,7 +22,9 @@ std::unordered_map<std::string, std::array<float, 6>> UI::UIBattle = {
 
 std::unordered_map<std::string, std::array<float, 6>> UI::UIReward = {
     {"rect", {160, 40, 960, 640}},
+    {"cursor", {0, 0, 160, 160}},
     {"text_title", {180, 60}},
+    {"button_select", {200, 200, 360, 0, 160, 160}},
     {"button_ok", {560, 560, 160, 80}},
     {"text_ok", {580, 580}}
 };

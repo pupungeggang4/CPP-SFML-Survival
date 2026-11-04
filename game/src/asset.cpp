@@ -10,8 +10,13 @@ void Asset::loadAsset() {
         {"button_back", sf::Texture("asset/image/back.png")},
         {"arrow", sf::Texture("asset/image/arrow.png")},
         {"cursor", sf::Texture("asset/image/cursor.png")},
-        {"button_menu", sf::Texture("asset/image/menu.png")}
+        {"button_menu", sf::Texture("asset/image/menu.png")},
+        {"placeholder", sf::Texture("asset/image/placeholder.png")}
     });
+
+    for (auto& pair: texture) {
+        pair.second.setSmooth(false);
+    }
 }
 
 void Asset::disposeAsset() {

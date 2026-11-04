@@ -5,6 +5,8 @@
 
 class Game;
 class Label;
+class RectColor;
+class RectTexture;
 class ButtonColor;
 class ButtonTexture;
 class Menu;
@@ -98,9 +100,10 @@ class WindowReward : public Scene {
     public:
         int selected = 0;
         shared_ptr<Label> textTitle;
-        sf::RectangleShape bg, cursor;
-
+        shared_ptr<RectColor> bg;
+        shared_ptr<RectTexture> cursor;
         shared_ptr<ButtonColor> buttonOk;
+        std::array<shared_ptr<ButtonTexture>, 3> buttonSelect;
 
         WindowReward();
         void ready(Game&) override;

@@ -15,12 +15,18 @@ class Label {
 
 class RectColor {
     public:
+        sf::RectangleShape bg;
+
         RectColor(std::array<float, 6>, sf::Color);
+        void render(Game&);
 };
 
 class RectTexture {
     public:
+        sf::RectangleShape bg;
+
         RectTexture(std::array<float, 6>, sf::Texture*);
+        void render(Game&);
 };
 
 class Button {

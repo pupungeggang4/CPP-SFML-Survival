@@ -12,6 +12,27 @@ void Label::render(Game& game) {
     game.window.draw(*text);
 }
 
+RectColor::RectColor(std::array<float, 6> r, sf::Color color) {
+    bg = sf::RectangleShape({r[2], r[3]});
+    bg.setPosition({r[0], r[1]});
+    bg.setFillColor(color);
+}
+
+void RectColor::render(Game& game) {
+    game.window.draw(bg);
+}
+
+RectTexture::RectTexture(std::array<float, 6> r, sf::Texture* texture) {
+    bg = sf::RectangleShape({r[2], r[3]});
+    bg.setPosition({r[0], r[1]});
+    if (texture) bg.setTexture(texture);
+    else bg.setTexture(&Asset::texture["placeholder"]);
+}
+
+void RectTexture::render(Game& game) {
+    game.window.draw(bg);
+}
+
 Button::Button(std::array<float, 6> r) {
     rect = {{r[0], r[1]}, {r[2], r[3]}};
 }
@@ -40,7 +61,8 @@ void ButtonColor::render(Game& game) {
 ButtonTexture::ButtonTexture(std::array<float, 6> r, sf::Texture* texture, sf::String str, int size) : Button(r) {
     bg = sf::RectangleShape({r[2], r[3]});
     bg.setPosition({r[0], r[1]});
-    bg.setTexture(texture);
+    if (texture) bg.setTexture(texture);
+    else bg.setTexture(&Asset::texture["placeholder"]);
 
     text.emplace(*Asset::neodgm, str, size);
     text->setPosition({r[0] + 20, r[1] + 20});
