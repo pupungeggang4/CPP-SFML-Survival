@@ -17,7 +17,10 @@ void SceneBattle::ready(Game& game) {
 }
 
 void SceneBattle::update(Game& game) {
-
+    if (game.menu == false) {
+        if (game.state == NORMAL) {
+        }
+    }
 }
 
 void SceneBattle::render(Game& game) {

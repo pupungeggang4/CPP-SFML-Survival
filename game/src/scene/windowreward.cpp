@@ -42,9 +42,17 @@ void WindowReward::render(Game& game) {
 }
 
 void WindowReward::keyDown(Game& game, sf::Keyboard::Scan scan) {
+    using Scan = sf::Keyboard::Scan;
 
+    if (scan == Scan::Left || scan == Scan::A) selected = (selected + 2) % 3;
+    else if (scan == Scan::Right || scan == Scan::D) selected = (selected + 1) % 3;
+    else if (scan == Scan::Enter) game.state = NORMAL;
 }
 
 void WindowReward::mouseUp(Game& game, sf::Vector2f pos, sf::Mouse::Button button) {
+    for (int i = 0; i < 3; i++) {
+        if (buttonSelect[i]->contains(pos)) selected = i;
+    }
 
+    if (buttonOk->contains(pos)) game.state = NORMAL;
 }
