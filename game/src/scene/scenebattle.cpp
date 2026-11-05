@@ -4,6 +4,7 @@
 #include "ui/ui.hpp"
 #include "ui/uielement.hpp"
 
+#include "field.hpp"
 #include "game.hpp"
 
 SceneBattle::SceneBattle() {
@@ -19,11 +20,15 @@ void SceneBattle::ready(Game& game) {
 void SceneBattle::update(Game& game) {
     if (game.menu == false) {
         if (game.state == NORMAL) {
+            game.field->update(game);
         }
     }
 }
 
 void SceneBattle::render(Game& game) {
+    game.window.setView(game.viewCamera);
+    game.field->render(game);
+
     game.window.setView(game.viewUI);
     buttonMenu->render(game);
 

@@ -1,6 +1,8 @@
 #include "game.hpp"
 #include "asset.hpp"
+
 #include "scene.hpp"
+#include "field.hpp"
 
 Game::Game() {
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
@@ -16,7 +18,7 @@ Game::Game() {
 
     scale = width / 1280.0f;
     viewUI = sf::View({640, 360}, {1280, 720});
-    viewCamera = sf::View({0, 0}, {1280, 720});
+    viewCamera = sf::View({640, 360}, {1280, 720});
     clock = sf::Clock();
 
     Asset::loadAsset();
@@ -29,6 +31,8 @@ Game::Game() {
     });
     scene = scenes[TITLE];
     scene->ready(*this);
+
+    field = make_shared<Field>();
 }
 
 void Game::loop() {
@@ -60,7 +64,22 @@ void Game::handleInput() {
 
         if (const auto* e = event->getIf<sf::Event::KeyPressed>()) {
             Scan scan = e->scancode;
+            
+            if (scan == Scan::Left || scan == Scan::W) keyPressed[LEFT] = true;
+            else if (scan == Scan::Right || scan == Scan::D) keyPressed[RIGHT] = true;
+            else if (scan == Scan::Up || scan == Scan::W) keyPressed[UP] = true;
+            else if (scan == Scan::Down || scan == Scan::S) keyPressed[DOWN] = true;
+
             scene->keyDown(*this, scan);
+        }
+
+        if (const auto* e = event->getIf<sf::Event::KeyReleased>()) {
+            Scan scan = e->scancode;
+
+            if (scan == Scan::Left || scan == Scan::W) keyPressed[LEFT] = false;
+            else if (scan == Scan::Right || scan == Scan::D) keyPressed[RIGHT] = false;
+            else if (scan == Scan::Up || scan == Scan::W) keyPressed[UP] = false;
+            else if (scan == Scan::Down || scan == Scan::S) keyPressed[DOWN] = false;
         }
     }
 }

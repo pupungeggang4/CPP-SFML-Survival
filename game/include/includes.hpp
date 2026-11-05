@@ -19,6 +19,7 @@
 
 enum SceneName {TITLE, SELECT, BATTLE, COLLECTION};
 enum State {NORMAL, REWARD};
+enum Direction {LEFT, RIGHT, UP, DOWN};
 
 using std::shared_ptr;
 using std::make_shared;
