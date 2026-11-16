@@ -6,7 +6,7 @@
 #include "game.hpp"
 
 SceneSelect::SceneSelect() {
-    textTitle = make_shared<Label>(UI::UISelect["text_title"], sf::Color::Black, "Select Character");
+    textTitle = make_shared<Label>(UI::UISelect["text_title"], "Select Character");
 
     buttonBack = make_shared<ButtonTexture>(UI::UISelect["button_back"], &Asset::texture["button_back"], "");
     for (int i = 0; i < 9; i++) {

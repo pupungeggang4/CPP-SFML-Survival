@@ -7,7 +7,7 @@
 #include "game.hpp"
 
 WindowReward::WindowReward() {
-    textTitle = make_shared<Label>(UI::UIReward["text_title"], sf::Color::Black, "Select");
+    textTitle = make_shared<Label>(UI::UIReward["text_title"], "Select");
     bg = make_shared<RectColor>(UI::UIReward["rect"], sf::Color::Yellow);
     cursor = make_shared<RectTexture>(UI::UIReward["cursor"], &Asset::texture["cursor"]);
     buttonOk = make_shared<ButtonColor>(UI::UIReward["button_ok"], sf::Color::Cyan, "Start");

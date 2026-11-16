@@ -7,7 +7,7 @@
 #include "game.hpp"
 
 Menu::Menu() {
-    textPaused = make_shared<Label>(UI::UIMenu["text_paused"], sf::Color::Black, "Paused");
+    textPaused = make_shared<Label>(UI::UIMenu["text_paused"], "Paused");
     arrow = sf::RectangleShape({UI::UIMenu["arrow"][4], UI::UIMenu["arrow"][5]});
     arrow.setTexture(&Asset::texture["arrow"]);
     bg = sf::RectangleShape({UI::UIMenu["rect"][2], UI::UIMenu["rect"][3]});

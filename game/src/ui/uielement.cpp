@@ -2,7 +2,7 @@
 #include "asset.hpp"
 #include "game.hpp"
 
-Label::Label(std::array<float, 6> pos, sf::Color textColor, sf::String str, int size) {
+Label::Label(std::array<float, 6> pos, sf::String str, sf::Color textColor, int size) {
     text.emplace(*Asset::neodgm, str, size);
     text->setPosition({pos[0], pos[1]});
     text->setFillColor(textColor);

@@ -62,6 +62,8 @@ class SceneBattle : public Scene {
         shared_ptr<Menu> menu;
         shared_ptr<WindowReward> windowReward;
         shared_ptr<ButtonTexture> buttonMenu;
+        shared_ptr<Label> textHP, textEnergy;
+        shared_ptr<RectColor> barHP, barEnergy;
 
         SceneBattle();
         void ready(Game&) override;

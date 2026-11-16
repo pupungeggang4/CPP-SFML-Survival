@@ -17,7 +17,11 @@ std::unordered_map<std::string, std::array<float, 6>> UI::UISelect = {
 };
 
 std::unordered_map<std::string, std::array<float, 6>> UI::UIBattle = {
-    {"button_menu", {1180, 20, 80, 80}}
+    {"button_menu", {1180, 20, 80, 80}},
+    {"text_hp", {20, 20}},
+    {"bar_hp", {180, 40, 240, 20}},
+    {"text_energy", {20, 60}},
+    {"bar_energy", {180, 80, 240, 20}}
 };
 
 std::unordered_map<std::string, std::array<float, 6>> UI::UIReward = {

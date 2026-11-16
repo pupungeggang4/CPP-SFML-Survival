@@ -27,7 +27,6 @@ void Player::update(Game& game) {
     if (game.keyPressed[RIGHT]) rect.position.x += 320 * game.dt;
     if (game.keyPressed[UP]) rect.position.y -= 320 * game.dt;
     if (game.keyPressed[DOWN]) rect.position.y += 320 * game.dt;
-
 }
 
 Field::Field() {    

@@ -7,7 +7,7 @@
 #include "game.hpp"
 
 SceneTitle::SceneTitle() {
-    textTitle = make_shared<Label>(UI::UITitle["text_title"], sf::Color::Black, "Planterguy Survival");
+    textTitle = make_shared<Label>(UI::UITitle["text_title"], "Planterguy Survival");
     buttonStart = make_shared<ButtonColor>(UI::UITitle["button_start"], sf::Color::Yellow, "Start Game");
     buttonCollection = make_shared<ButtonColor>(UI::UITitle["button_collection"], sf::Color::Cyan, "Collection");
     buttonQuit = make_shared<ButtonColor>(UI::UITitle["button_quit"], sf::Color::Yellow, "Quit Game");
